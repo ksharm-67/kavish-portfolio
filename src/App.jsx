@@ -603,7 +603,7 @@ function RMPCaseStudy() {
           </div>
           <div className="prototype-item">
             <img src="/src/assets/rmp-rating.png" alt="Rate Professor" />
-            <p className="prototype-caption">Improved rating mechanism with more options</p>p>
+            <p className="prototype-caption">Improved rating mechanism with more options</p>
           </div>
         </div>
       </section>
