@@ -1,5 +1,5 @@
-﻿import './App.css'
-import MyImage from './assets/cat.jpg'
+import './App.css'
+import catImage from './assets/cat.jpg'
 import { useState, useCallback, memo } from 'react';
 
 // Memoized skill component to prevent unnecessary re-renders
@@ -35,6 +35,25 @@ const ExperienceCard = memo(function ExperienceCard({ title, company, period, po
           <li key={i}>{point}</li>
         ))}
       </ul>
+    </div>
+  );
+});
+
+// UI/UX project card
+const UXProjectCard = memo(function UXProjectCard({ title, tools, date, description, link }) {
+  return (
+    <div className="ux-card">
+      <div className="ux-card-header">
+        <h3>{title}</h3>
+        <span className="ux-date">{date}</span>
+      </div>
+      <div className="ux-tools">
+        {tools.map((tool, i) => (
+          <span key={i} className="ux-tool">{tool}</span>
+        ))}
+      </div>
+      <p className="ux-description">{description}</p>
+      <a href={link} className="ux-link">View Case Study →</a>
     </div>
   );
 });
@@ -136,6 +155,23 @@ const scrollToSection = (id) => {
 };
 
 function App() {
+  const uiuxProjects = [
+    {
+      title: "JobTracker",
+      tools: ["Figma", "A/B Testing", "UED"],
+      date: "Sep 2025 – Nov 2025",
+      description: "A comprehensive job application tracking system with intuitive dashboard, profile management, and calendar integration to help students organize their internship and job search process. Conducted comparative usability research examining split-screen versus sequential form layouts.",
+      link: "/projects/jobtracker"
+    },
+    {
+      title: "RateMyProfessor Redesign",
+      tools: ["Figma", "User Research", "Wireframing"],
+      date: "Dec 2025",
+      description: "Redesigned core RateMyProfessor flows by analyzing how users search for professors, interpret ratings, and compare options. Created revised user flows and mid-fidelity wireframes that reorganized rating data and reduced cognitive load.",
+      link: "/projects/ratemyprofessor"
+    }
+  ];
+
   const experiences = [
     {
       title: "Data Engineering Intern",
@@ -194,14 +230,14 @@ function App() {
 
   const skillCategories = [
     {
-      title: "Programming",
+      title: "Languages",
       variant: 1,
-      skills: ["C++", "Python", "Java", "JavaScript", "SQL", "HTML/CSS", "MATLAB", "R"]
+      skills: ["C", "C++", "Python", "Java", "JavaScript", "SQL"]
     },
     {
-      title: "Frameworks/Libraries",
+      title: "Web & Applications",
       variant: 2,
-      skills: ["Firebase", "React.js", "Flask", "Pandas", "NumPy", "PyTorch", "Kafka"]
+      skills: ["React.js", "Flask", "HTML", "CSS", "REST APIs"]
     },
     {
       title: "Databases",
@@ -209,14 +245,14 @@ function App() {
       skills: ["MongoDB", "ClickHouse", "PostgreSQL"]
     },
     {
-      title: "Tools/Platforms",
+      title: "Data & Analysis",
       variant: 4,
-      skills: ["Git", "GitHub", "Docker", "Jira", "Linux", "VS Code"]
+      skills: ["R", "Tableau", "scikit-learn", "Excel"]
     },
     {
-      title: "Concepts",
+      title: "Systems & DevOps",
       variant: 5,
-      skills: ["OAuth2", "REST APIs", "OOP", "Functional Programming", "Multithreading", "Unit Testing", "Agile", "Cryptographic Protocols", "Big O", "CRUD Operations"]
+      skills: ["Shell Scripting", "Docker", "Git", "Jira", "Unit Testing"]
     }
   ];
 
@@ -235,6 +271,7 @@ function App() {
               <button className="nav-button" type="button">My Resume</button>
             </a>
           </li>
+          <li><button className="nav-button" type="button" onClick={() => scrollToSection('uiux')}>UI/UX</button></li>
           <li><button className="nav-button" type="button" onClick={() => scrollToSection('education')}>Education</button></li>
           <li><button className="nav-button" type="button" onClick={() => scrollToSection('exp')}>Experience</button></li>
           <li><button className="nav-button" type="button" onClick={() => scrollToSection('projects')}>Projects</button></li>
@@ -265,10 +302,20 @@ function App() {
             I'm still early in my career, but I'm trying to learn as much as I can and figure out where I can contribute something useful.
           </p>
         </div>
-        <img src={MyImage} className="side-img" alt="Profile" loading="lazy" />
+        <img src={catImage} className="side-img" alt="Profile" loading="lazy" />
       </section>
 
-      {/* Education Section - Replacing Timeline */}
+      {/* UI/UX Portfolio Section */}
+      <section id="uiux">
+        <h2 className="mini-heading">UI/UX Portfolio</h2>
+        <div className="ux-cards">
+          {uiuxProjects.map((project, i) => (
+            <UXProjectCard key={i} {...project} />
+          ))}
+        </div>
+      </section>
+
+      {/* Education Section */}
       <section id="education">
         <h2 className="mini-heading">Education</h2>
         <div className="education-container">
