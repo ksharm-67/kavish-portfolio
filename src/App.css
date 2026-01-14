@@ -108,6 +108,86 @@ nav {
   50.01%, 100% { opacity: 0; }
 }
 
+/* ===== UI/UX Portfolio Section ===== */
+#uiux {
+  padding: 2rem 0;
+}
+
+.ux-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.ux-card {
+  width: 400px;
+  background: linear-gradient(135deg, rgba(129, 212, 250, 0.1) 0%, rgba(79, 195, 247, 0.05) 100%);
+  border: 2px solid #4FC3F7;
+  border-radius: 20px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ux-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(79, 195, 247, 0.2);
+}
+
+.ux-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.ux-card h3 {
+  color: #4FC3F7;
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.ux-date {
+  color: #888;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.ux-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.ux-tool {
+  background: rgba(79, 195, 247, 0.15);
+  border: 1px solid rgba(79, 195, 247, 0.3);
+  color: #4FC3F7;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.ux-description {
+  color: #e0e0e0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.ux-link {
+  color: #bb86fc;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.ux-link:hover {
+  color: #EA80FC;
+  text-decoration: underline;
+}
+
 /* ===== Education Section ===== */
 #education {
   padding: 2rem 0;
