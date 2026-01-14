@@ -1,6 +1,7 @@
 import './App.css'
 import catImage from './assets/cat.jpg'
-import { useState, useCallback, memo } from 'react';
+import { useState, useCallback, memo } from 'react'
+import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom'
 
 // Memoized skill component to prevent unnecessary re-renders
 const Skill = memo(function Skill({ name, variant = 1 }) {
@@ -53,7 +54,7 @@ const UXProjectCard = memo(function UXProjectCard({ title, tools, date, descript
         ))}
       </div>
       <p className="ux-description">{description}</p>
-      <a href={link} className="ux-link">View Case Study →</a>
+      <Link to={link} className="ux-link">View Case Study →</Link>
     </div>
   );
 });
@@ -417,4 +418,213 @@ function App() {
   );
 }
 
-export default App;
+// RateMyProfessor Case Study Page
+function RMPCaseStudy() {
+  const navigate = useNavigate();
+
+  return (
+    <div className="case-study">
+      <button className="back-button" onClick={() => navigate('/')}>← Back to Portfolio</button>
+      
+      <header className="case-study-header">
+        <h1>Redesigning RateMyProfessors.com</h1>
+        <div className="case-study-meta">
+          <span className="meta-item">Figma</span>
+          <span className="meta-item">User Research</span>
+          <span className="meta-item">Wireframing</span>
+          <span className="meta-date">December 2025</span>
+        </div>
+      </header>
+
+      <section className="case-study-section">
+        <h2>Introduction</h2>
+        <p>
+          RateMyProfessors.com is a free site where users can rate their professors at higher education 
+          institutions (generally in the US) based on class difficulty, teaching style, and other factors. 
+          Users leave reviews to help future students decide whether to take classes offered by a particular professor.
+        </p>
+        <div className="case-study-objectives">
+          <div className="objective">
+            <h4>Test Case</h4>
+            <p>
+              The main objective of this study was to analyze ratemyprofessors.com for usability and 
+              accessibility issues. The issues identified would inform a redesign to better support 
+              user goals and expectations.
+            </p>
+          </div>
+          <div className="objective">
+            <h4>Test Objectives</h4>
+            <p>
+              To improve ease of use by addressing glitches and unhelpful policies, ensure consistency 
+              throughout the website, and help users achieve their intended outcomes.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="case-study-section">
+        <h2>Methodology</h2>
+        <div className="methodology-steps">
+          <div className="method-step">
+            <span className="step-number">1</span>
+            <div>
+              <h4>Preliminary Analysis</h4>
+              <p>Understood the purpose and function of the website and verified it matched project requirements.</p>
+            </div>
+          </div>
+          <div className="method-step">
+            <span className="step-number">2</span>
+            <div>
+              <h4>Heuristic Evaluation</h4>
+              <p>Used Nielsen's heuristics to assess usability issues based on a severity code.</p>
+            </div>
+          </div>
+          <div className="method-step">
+            <span className="step-number">3</span>
+            <div>
+              <h4>User Research</h4>
+              <p>Conducted online surveys through Google Forms and received 23 responses as part of primary research.</p>
+            </div>
+          </div>
+          <div className="method-step">
+            <span className="step-number">4</span>
+            <div>
+              <h4>User Personas</h4>
+              <p>Crafted 3 personas based on information gathered during user research.</p>
+            </div>
+          </div>
+          <div className="method-step">
+            <span className="step-number">5</span>
+            <div>
+              <h4>User Stories</h4>
+              <p>Created 3 user stories defining tasks the personas would perform on the website.</p>
+            </div>
+          </div>
+          <div className="method-step">
+            <span className="step-number">6</span>
+            <div>
+              <h4>Prototyping</h4>
+              <p>Designed an interactive prototype based on user tasks.</p>
+            </div>
+          </div>
+          <div className="method-step">
+            <span className="step-number">7</span>
+            <div>
+              <h4>Usability Testing</h4>
+              <p>Conducted task-based testing with 3 participants to evaluate the prototype.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="case-study-section">
+        <h2>Heuristic Evaluation</h2>
+        <div className="heuristic-findings">
+          <div className="heuristic-item">
+            <h4>User Control and Freedom</h4>
+            <p>
+              There is currently no way to erase a review if a user submits one without logging in. 
+              Additionally, there is no way to add a professor to the website who isn't already listed.
+            </p>
+          </div>
+          <div className="heuristic-item">
+            <h4>Error Prevention</h4>
+            <ul>
+              <li>
+                If a user wants to review a professor for a class not in the dropdown list, they must 
+                type directly into the dropdown box. There's no separate "add a class" option, leading 
+                users to assume they can't add a class and instead select a different one.
+              </li>
+              <li>
+                Anyone, including the professor themselves, can report a review for removal without it 
+                actually violating site policy. This enables misuse and unintended outcomes.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="case-study-section">
+        <h2>User Research</h2>
+        <p>
+          I distributed a Google Forms survey to 23 college students across three universities. 
+          The survey focused on how often they use RateMyProfessors, what information they look for, 
+          and what frustrations they encounter.
+        </p>
+        <div className="research-findings">
+          <div className="finding">
+            <span className="finding-stat">78%</span>
+            <p>of respondents check RateMyProfessors before registering for classes each semester</p>
+          </div>
+          <div className="finding">
+            <span className="finding-stat">61%</span>
+            <p>said they struggle to compare multiple professors teaching the same course</p>
+          </div>
+          <div className="finding">
+            <span className="finding-stat">52%</span>
+            <p>mentioned that outdated reviews (3+ years old) make it hard to judge current teaching quality</p>
+          </div>
+        </div>
+        <p>
+          Several participants mentioned that the rating categories feel vague. "Difficulty" in particular 
+          caused confusion because some students want challenging courses while others want manageable workloads. 
+          The current system doesn't distinguish between "hard but rewarding" and "hard because disorganized."
+        </p>
+        <p>
+          When asked about their biggest pain point, the most common responses involved filtering and sorting. 
+          Students wanted to filter by semester taught, sort by most recent reviews, or see only reviews from 
+          their specific major. None of these options currently exist.
+        </p>
+      </section>
+
+      <section className="case-study-section">
+        <h2>Prototype</h2>
+        <p>
+          Based on the research findings, I created mid-fidelity wireframes in Figma that address the main 
+          usability issues. The redesign focuses on improved filtering, clearer rating breakdowns, and 
+          better comparison tools.
+        </p>
+        <div className="prototype-images">
+          <div className="prototype-item">
+            <img src="/src/assets/rmp-login1.png" alt="Redesigned login interface" />
+            <img src="/src/assets/rmp-login2.png" alt="Redesigned login interface" />
+            <p className="prototype-caption">Redesigned login to be cleaner and more concise</p>
+          </div>
+          <div className="prototype-item">
+            <img src="/src/assets/rmp-search.png" alt="Redesigned search interface" />
+            <p className="prototype-caption">Redesigned search with advanced filtering options</p>
+          </div>
+          <div className="prototype-item">
+            <img src="/src/assets/rmp-profile1.png" alt="Professor profile page" />
+            <img src="/src/assets/rmp-profile2.png" alt="Professor profile page" />
+            <img src="/src/assets/rmp-profile3.png" alt="Professor profile page" />
+            <img src="/src/assets/rmp-profile4.png" alt="Professor profile page" />
+            <p className="prototype-caption">Professor profile with reorganized rating data</p>
+          </div>
+          <div className="prototype-item">
+            <img src="/src/assets/rmp-rating.png" alt="Rate Professor" />
+            <p className="prototype-caption">Improved rating mechanism with more options<p>
+          </div>
+        </div>
+      </section>
+
+      <footer className="case-study-footer">
+        <p>© 2025 Kavish Sharma</p>
+      </footer>
+    </div>
+  );
+}
+
+// Main App wrapper with routing
+function AppWrapper() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/projects/ratemyprofessor" element={<RMPCaseStudy />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default AppWrapper;
