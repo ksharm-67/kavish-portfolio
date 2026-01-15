@@ -1,5 +1,14 @@
 import './App.css'
 import catImage from './assets/cat.jpg'
+import rmpLogin1 from './assets/rmp-login1.png'
+import rmpLogin2 from './assets/rmp-login2.png'
+import search1 from './assets/rmp-search1.png'
+import search2 from './assets/rmp-search2.png'
+import profile1 from './assets/rmp-search2.png'
+import profile2 from './assets/rmp-search2.png'
+import profile3 from './assets/rmp-search2.png'
+import profile4 from './assets/rmp-search2.png'
+
 import { useState, useCallback, memo } from 'react'
 import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom'
 
@@ -586,23 +595,23 @@ function RMPCaseStudy() {
         </p>
         <div className="prototype-images">
           <div className="prototype-item">
-            <img src="/src/assets/rmp-login1.png" alt="Redesigned login interface" />
-            <img src="/src/assets/rmp-login2.png" alt="Redesigned login interface" />
+            <img src={rmpLogin1} alt="Redesigned login interface" />
+            <img src={rmpLogin2} alt="Redesigned login interface" />
             <p className="prototype-caption">Redesigned login to be cleaner and more concise</p>
           </div>
           <div className="prototype-item">
-            <img src="/src/assets/rmp-search.png" alt="Redesigned search interface" />
+            <img src={search1} alt="Redesigned search interface" />
+            <img src={search2} alt="Redesigned search interface" />
             <p className="prototype-caption">Redesigned search with advanced filtering options</p>
           </div>
           <div className="prototype-item">
-            <img src="/src/assets/rmp-profile1.png" alt="Professor profile page" />
-            <img src="/src/assets/rmp-profile2.png" alt="Professor profile page" />
-            <img src="/src/assets/rmp-profile3.png" alt="Professor profile page" />
-            <img src="/src/assets/rmp-profile4.png" alt="Professor profile page" />
+            <img src={profile1} alt="Professor profile page" />
+            <img src={profile2} alt="Professor profile page" />
             <p className="prototype-caption">Professor profile with reorganized rating data</p>
           </div>
           <div className="prototype-item">
-            <img src="/src/assets/rmp-rating.png" alt="Rate Professor" />
+            <img src={profile3} alt="Professor profile page" />
+            <img src={profile4} alt="Professor profile page" />
             <p className="prototype-caption">Improved rating mechanism with more options</p>
           </div>
         </div>
