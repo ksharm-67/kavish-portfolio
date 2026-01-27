@@ -255,7 +255,7 @@ function App() {
   const uiuxProjects = [
     {
       title: "JobTracker",
-      tools: ["Figma", "A/B Testing", "UED"],
+      tools: ["Figma", "A/B Testing", "User Research"],
       date: "Sep 2025 – Nov 2025",
       description: "A comprehensive job application tracking system with intuitive dashboard, profile management, and calendar integration to help students organize their internship and job search process. Conducted comparative usability research examining split-screen versus sequential form layouts.",
       link: "/projects/jobtracker"
@@ -760,12 +760,236 @@ function RMPCaseStudy() {
   );
 }
 
+// JobTracker Case Study Page
+function JobTrackerCaseStudy() {
+  const navigate = useNavigate();
+
+  return (
+    <div className="case-study">
+      <button className="back-button" onClick={() => navigate('/')}>← Back to Portfolio</button>
+      
+      <header className="case-study-header">
+        <h1>JobTracker: Job Application Tracking System</h1>
+        <div className="case-study-meta">
+          <span className="meta-item">Figma</span>
+          <span className="meta-item">A/B Testing</span>
+          <span className="meta-item">User Research</span>
+          <span className="meta-date">September 2025 – November 2025</span>
+        </div>
+      </header>
+
+      <section className="case-study-section">
+        <h2>Introduction</h2>
+        <p>
+          JobTracker is a job application tracking system designed to help students and recent graduates 
+          manage their internship and job search process. The system addresses common pain points: tracking 
+          multiple applications across platforms, managing resume and cover letter versions, meeting deadlines, 
+          and coordinating with career advisors.
+        </p>
+        <div className="case-study-objectives">
+          <div className="objective">
+            <h4>Project Goals</h4>
+            <p>
+              Track job and internship applications efficiently, manage multiple versions of resumes and 
+              cover letters, provide deadline reminders and follow-up notifications, facilitate communication 
+              with career advisors, and reduce cognitive load to prevent missed opportunities.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="case-study-section">
+        <h2>Research & User Interviews</h2>
+        <p>
+          I conducted structured and semi-structured interviews with students and recent graduates to 
+          understand their current practices and challenges in managing job applications.
+        </p>
+        <div className="heuristic-findings">
+          <div className="heuristic-item">
+            <h4>Key Findings</h4>
+            <ul>
+              <li>Forgetting deadlines and missing follow-up opportunities</li>
+              <li>Losing track of resume versions and cover letters</li>
+              <li>Recruiter emails buried in inboxes</li>
+              <li>Re-entering information repeatedly across platforms</li>
+              <li>Managing applications across LinkedIn, Handshake, and company websites</li>
+            </ul>
+          </div>
+        </div>
+        <div className="research-findings">
+          <div className="finding">
+            <span className="finding-stat">5</span>
+            <p>core tasks identified that the system must support</p>
+          </div>
+          <div className="finding">
+            <span className="finding-stat">10</span>
+            <p>users participated in A/B testing of layout designs</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="case-study-section">
+        <h2>User Needs</h2>
+        <p>
+          Based on research, I identified core needs: stay organized with applications across multiple 
+          platforms, manage multiple versions of resumes and cover letters, get reminders for deadlines 
+          and interviews, have a central space to store and label documents by job, and track recruiter 
+          communications and follow-ups.
+        </p>
+        <blockquote className="user-quote">
+          "If the system is simple, saves me time, and keeps me on track without pressuring me every day, I'll use it."
+        </blockquote>
+      </section>
+
+      <section className="case-study-section">
+        <h2>Conceptual Design</h2>
+        <p>
+          I chose a card-based dashboard approach where every job gets its own card containing application 
+          deadline with automatic reminders, correct resume and cover letter versions, recruiter communication 
+          notes, and status tracking (Pending, Submitted, Interview).
+        </p>
+        <p>
+          The dashboard displays in board or calendar style, similar to Trello, making it familiar and intuitive. 
+          This approach aligns with student needs, supports version control, and works like familiar tools.
+        </p>
+      </section>
+
+      <section className="case-study-section">
+        <h2>Prototyping & Testing</h2>
+        <div className="methodology-steps">
+          <div className="method-step">
+            <span className="step-number">1</span>
+            <div>
+              <h4>Initial Testing</h4>
+              <p>Conducted usability testing with participants to evaluate card-based organization, board/calendar toggle, and form flow.</p>
+            </div>
+          </div>
+          <div className="method-step">
+            <span className="step-number">2</span>
+            <div>
+              <h4>Feedback Collection</h4>
+              <p>Identified areas for improvement including button labels, confirmation messages, and navigation aids.</p>
+            </div>
+          </div>
+          <div className="method-step">
+            <span className="step-number">3</span>
+            <div>
+              <h4>Design Refinements</h4>
+              <p>Added color-coded deadlines, visual upload indicators, tooltips, calendar picker, and status-based filtering.</p>
+            </div>
+          </div>
+          <div className="method-step">
+            <span className="step-number">4</span>
+            <div>
+              <h4>High-Fidelity Prototype</h4>
+              <p>Created complete Figma prototype with dashboard, add application flow, and advisor review interface.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="case-study-section">
+        <h2>A/B Testing: Layout Comparison</h2>
+        <p>
+          I conducted comparative testing to determine which layout leads to greater usability: split-screen 
+          (side-by-side display) or step-by-step (sequential screens).
+        </p>
+        <div className="case-study-objectives">
+          <div className="objective">
+            <h4>Research Question</h4>
+            <p>
+              Which interface layout for managing job applications leads to greater usability and efficiency 
+              for users when adding new applications?
+            </p>
+          </div>
+          <div className="objective">
+            <h4>Testing Tasks</h4>
+            <p>
+              Participants completed three tasks: add complete application with all details, quick application 
+              entry (speed-focused), and add application while verifying document versions.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="case-study-section">
+        <h2>Results</h2>
+        <div className="research-findings">
+          <div className="finding">
+            <span className="finding-stat">100.2s</span>
+            <p>mean completion time for split-screen layout (Version A)</p>
+          </div>
+          <div className="finding">
+            <span className="finding-stat">61.8s</span>
+            <p>mean completion time for step-by-step layout (Version B)</p>
+          </div>
+          <div className="finding">
+            <span className="finding-stat">38%</span>
+            <p>faster completion with step-by-step layout</p>
+          </div>
+        </div>
+        <p>
+          Version B (step-by-step) was described as "cleaner" and "easier to follow" with higher comfort 
+          and ease scores. Users reported less cognitive load with Version B compared to Version A, which 
+          showed more navigation errors.
+        </p>
+        <div className="heuristic-item">
+          <h4>Recommendation</h4>
+          <p>
+            Implement step-by-step layout as the primary interface due to lower cognitive load, faster 
+            completion trends, and overwhelmingly positive user feedback.
+          </p>
+        </div>
+      </section>
+
+      <section className="case-study-section">
+        <h2>Key Insights</h2>
+        <div className="methodology-steps">
+          <div className="method-step">
+            <span className="step-number">1</span>
+            <div>
+              <h4>What Worked Well</h4>
+              <p>Card-based dashboard universally well-received, calendar and board views provided complementary perspectives, document version control addressed critical pain point.</p>
+            </div>
+          </div>
+          <div className="method-step">
+            <span className="step-number">2</span>
+            <div>
+              <h4>Design Recommendations</h4>
+              <p>Implement step-by-step layout, add clear success indicators, use color-coded deadlines with clickable details, include document preview, and integrate advisor notifications.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="case-study-section">
+        <h2>Conclusion</h2>
+        <p>
+          JobTracker addresses core student challenges through intuitive card-based organization, automated 
+          reminders, document version control, and advisor collaboration. The comparative usability study 
+          revealed that step-by-step layout provides faster completion and lower cognitive load, making it 
+          the recommended approach.
+        </p>
+        <p>
+          Future iterations could explore external platform integrations (LinkedIn, Gmail, Handshake) and 
+          AI-powered resume customization.
+        </p>
+      </section>
+
+      <footer className="case-study-footer">
+        <p>© 2025 Kavish Sharma</p>
+      </footer>
+    </div>
+  );
+}
+
 // Main App wrapper with routing
 function AppWrapper() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/projects/jobtracker" element={<JobTrackerCaseStudy />} />
         <Route path="/projects/ratemyprofessor" element={<RMPCaseStudy />} />
       </Routes>
     </BrowserRouter>
