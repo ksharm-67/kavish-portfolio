@@ -1,5 +1,6 @@
 import './App.css'
 import catImage from './assets/cat.jpg'
+import resumeImage from './assets/resume.png'
 import rmpLogin1 from './assets/rmp-login1.png'
 import rmpLogin2 from './assets/rmp-login2.png'
 import search1 from './assets/rmp-search1.png'
@@ -124,6 +125,36 @@ function SlideshowModal({ images, currentIndex, onClose, onNext, onPrev }) {
   );
 }
 
+// Resume Modal Component
+function ResumeModal({ onClose, resumeSrc }) {
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
+  return (
+    <div className="slideshow-overlay" onClick={onClose}>
+      <div className="resume-modal" onClick={(e) => e.stopPropagation()}>
+        <button className="slideshow-close" onClick={onClose} aria-label="Close resume">
+          ×
+        </button>
+        
+        <div className="resume-content">
+          <img 
+            src={resumeSrc} 
+            alt="Resume" 
+            className="resume-image"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // Contact form component
 function ContactForm() {
   const [formData, setFormData] = useState({
@@ -219,6 +250,8 @@ const scrollToSection = (id) => {
 };
 
 function App() {
+  const [resumeModalOpen, setResumeModalOpen] = useState(false);
+
   const uiuxProjects = [
     {
       title: "JobTracker",
@@ -327,13 +360,13 @@ function App() {
       <nav>
         <ul className="navi">
           <li>
-            <a 
-              href="https://media.licdn.com/dms/image/v2/D562DAQFb6O9Yx93NgQ/profile-treasury-image-shrink_1280_1280/B56ZpmvnRQI0AQ-/0/1762660349562?e=1763265600&v=beta&t=Ut4s6aO6f5DSViwddoXZLpKqd6RFTYmtxYfD-h2R5KM" 
-              target="_blank" 
-              rel="noopener noreferrer"
+            <button 
+              className="nav-button" 
+              type="button"
+              onClick={() => setResumeModalOpen(true)}
             >
-              <button className="nav-button" type="button">My Resume</button>
-            </a>
+              My Resume
+            </button>
           </li>
           <li><button className="nav-button" type="button" onClick={() => scrollToSection('uiux')}>UI/UX</button></li>
           <li><button className="nav-button" type="button" onClick={() => scrollToSection('education')}>Education</button></li>
@@ -477,6 +510,13 @@ function App() {
       <footer>
         <p>© 2025 Kavish Sharma</p>
       </footer>
+
+      {resumeModalOpen && (
+        <ResumeModal 
+          onClose={() => setResumeModalOpen(false)}
+          resumeSrc={resumeImage}
+        />
+      )}
     </div>
   );
 }
