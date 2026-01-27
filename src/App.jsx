@@ -9,7 +9,7 @@ import profile2 from './assets/rmp-profile2.png'
 import profile3 from './assets/rmp-profile3.png'
 import profile4 from './assets/rmp-profile4.png'
 
-import { useState, useCallback, memo } from 'react'
+import { useState, useCallback, memo, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom'
 
 // Memoized skill component to prevent unnecessary re-renders
@@ -68,6 +68,62 @@ const UXProjectCard = memo(function UXProjectCard({ title, tools, date, descript
   );
 });
 
+// Slideshow Modal Component
+function SlideshowModal({ images, currentIndex, onClose, onNext, onPrev }) {
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose();
+      if (e.key === 'ArrowRight') onNext();
+      if (e.key === 'ArrowLeft') onPrev();
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose, onNext, onPrev]);
+
+  const currentImage = images[currentIndex];
+
+  return (
+    <div className="slideshow-overlay" onClick={onClose}>
+      <div className="slideshow-modal" onClick={(e) => e.stopPropagation()}>
+        <button className="slideshow-close" onClick={onClose} aria-label="Close slideshow">
+          ×
+        </button>
+        
+        <button 
+          className="slideshow-nav slideshow-prev" 
+          onClick={onPrev}
+          aria-label="Previous image"
+          disabled={currentIndex === 0}
+        >
+          ‹
+        </button>
+
+        <div className="slideshow-content">
+          <img 
+            src={currentImage.src} 
+            alt={currentImage.caption} 
+            className="slideshow-image"
+          />
+          <p className="slideshow-caption">{currentImage.caption}</p>
+          <div className="slideshow-counter">
+            {currentIndex + 1} / {images.length}
+          </div>
+        </div>
+
+        <button 
+          className="slideshow-nav slideshow-next" 
+          onClick={onNext}
+          aria-label="Next image"
+          disabled={currentIndex === images.length - 1}
+        >
+          ›
+        </button>
+      </div>
+    </div>
+  );
+}
+
 // Contact form component
 function ContactForm() {
   const [formData, setFormData] = useState({
@@ -86,8 +142,6 @@ function ContactForm() {
 
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
-    // For now, just show a success message
-    // Replace with actual form submission logic (e.g., EmailJS, Formspree, or your backend)
     setStatus('Thanks for reaching out! I\'ll get back to you soon.');
     setFormData({ name: "", email: "", type: "", subject: "", message: "" });
   }, []);
@@ -430,6 +484,40 @@ function App() {
 // RateMyProfessor Case Study Page
 function RMPCaseStudy() {
   const navigate = useNavigate();
+  const [slideshowOpen, setSlideshowOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const prototypeImages = [
+    { src: rmpLogin1, caption: "Redesigned login interface - cleaner layout" },
+    { src: rmpLogin2, caption: "Redesigned login interface - streamlined process" },
+    { src: search1, caption: "Enhanced search with advanced filtering options" },
+    { src: search2, caption: "Improved search results display" },
+    { src: profile1, caption: "Professor profile with reorganized rating data" },
+    { src: profile2, caption: "Detailed rating breakdown and statistics" },
+    { src: profile3, caption: "Review section with better organization" },
+    { src: profile4, caption: "Improved rating mechanism with clearer options" }
+  ];
+
+  const openSlideshow = (index) => {
+    setCurrentImageIndex(index);
+    setSlideshowOpen(true);
+  };
+
+  const closeSlideshow = () => {
+    setSlideshowOpen(false);
+  };
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => 
+      prev < prototypeImages.length - 1 ? prev + 1 : prev
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => 
+      prev > 0 ? prev - 1 : prev
+    );
+  };
 
   return (
     <div className="case-study">
@@ -591,31 +679,39 @@ function RMPCaseStudy() {
         <p>
           Based on the research findings, I created mid-fidelity wireframes in Figma that address the main 
           usability issues. The redesign focuses on improved filtering, clearer rating breakdowns, and 
-          better comparison tools.
+          better comparison tools. Click on any image to view it larger and navigate through the slideshow.
         </p>
         <div className="prototype-images">
-          <div className="prototype-item">
-            <img src={rmpLogin1} alt="Redesigned login interface" />
-            <img src={rmpLogin2} alt="Redesigned login interface" />
-            <p className="prototype-caption">Redesigned login to be cleaner and more concise</p>
-          </div>
-          <div className="prototype-item">
-            <img src={search1} alt="Redesigned search interface" />
-            <img src={search2} alt="Redesigned search interface" />
-            <p className="prototype-caption">Redesigned search with advanced filtering options</p>
-          </div>
-          <div className="prototype-item">
-            <img src={profile1} alt="Professor profile page" />
-            <img src={profile2} alt="Professor profile page" />
-            <p className="prototype-caption">Professor profile with reorganized rating data</p>
-          </div>
-          <div className="prototype-item">
-            <img src={profile3} alt="Professor profile page" />
-            <img src={profile4} alt="Professor profile page" />
-            <p className="prototype-caption">Improved rating mechanism with more options</p>
-          </div>
+          {prototypeImages.map((image, index) => (
+            <div 
+              key={index} 
+              className="prototype-item"
+              onClick={() => openSlideshow(index)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  openSlideshow(index);
+                }
+              }}
+            >
+              <img src={image.src} alt={image.caption} />
+              <p className="prototype-caption">{image.caption}</p>
+            </div>
+          ))}
         </div>
       </section>
+
+      {slideshowOpen && (
+        <SlideshowModal
+          images={prototypeImages}
+          currentIndex={currentImageIndex}
+          onClose={closeSlideshow}
+          onNext={nextImage}
+          onPrev={prevImage}
+        />
+      )}
 
       <footer className="case-study-footer">
         <p>© 2025 Kavish Sharma</p>
