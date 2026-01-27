@@ -1084,6 +1084,33 @@ textarea:focus-visible {
   margin-left: 1rem;
 }
 
+/* ===== Resume Modal ===== */
+.resume-modal {
+  position: relative;
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.resume-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.resume-image {
+  max-width: 100%;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  object-fit: contain;
+}
+
 /* Mobile responsiveness for slideshow */
 @media (max-width: 768px) {
   .slideshow-modal {
@@ -1124,6 +1151,10 @@ textarea:focus-visible {
 
   .slideshow-caption {
     font-size: 0.85rem;
+  }
+
+  .resume-image {
+    max-height: 85vh;
   }
 }
 
