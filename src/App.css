@@ -903,6 +903,16 @@ textarea:focus-visible {
   color: #ccc;
 }
 
+.user-quote {
+  background: rgba(187, 134, 252, 0.08);
+  border-left: 4px solid #bb86fc;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: #e0e0e0;
+  border-radius: 0 8px 8px 0;
+}
+
 .prototype-images {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
