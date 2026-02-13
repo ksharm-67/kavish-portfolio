@@ -12,6 +12,7 @@ import profile4 from './assets/rmp-profile4.png'
 
 import { useState, useCallback, memo, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 
 // Memoized skill component to prevent unnecessary re-renders
 const Skill = memo(function Skill({ name, variant = 1 }) {
@@ -987,6 +988,7 @@ function JobTrackerCaseStudy() {
 function AppWrapper() {
   return (
     <BrowserRouter>
+      <Analytics />
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/projects/jobtracker" element={<JobTrackerCaseStudy />} />
