@@ -97,6 +97,7 @@ nav {
   height: auto;
   border-radius: 12px;
   object-fit: cover;
+  padding-top: 20px;
 }
 
 .blinker {
