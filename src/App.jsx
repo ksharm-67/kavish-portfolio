@@ -281,8 +281,8 @@ function App() {
       ]
     },
     {
-      title: "AI-Powered Prediction of Protein Thermal Stability",
-      company: "Capstone Project",
+      title: "Machine Learning Intern",
+      company: "Defined Bioscience",
       period: "(2025 - Present)",
       points: [
         "Engineered features from protein sequence and structure data (FASTA, PDB).",
