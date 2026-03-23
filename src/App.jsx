@@ -271,7 +271,7 @@ function App() {
 
   const experiences = [
     {
-      title: "Data Engineering Intern",
+      title: "Software Engineering Intern",
       company: "CerebrumX",
       period: "(Summer 2025)",
       points: [
@@ -332,6 +332,11 @@ function App() {
       skills: ["C", "C++", "Python", "Java", "JavaScript", "SQL"]
     },
     {
+      title: "AI/ML",
+      variant: 5,
+      skills: ["PyTorch", "scikit-learn", "Opacus", "HuggingFace transformers"]
+    },
+    {
       title: "Web & Applications",
       variant: 2,
       skills: ["React.js", "Flask", "HTML", "CSS", "REST APIs"]
@@ -344,12 +349,12 @@ function App() {
     {
       title: "Data & Analysis",
       variant: 4,
-      skills: ["R", "Tableau", "scikit-learn", "Excel"]
+      skills: ["R", "Tableau", "Kafka", "Excel"]
     },
     {
       title: "Systems & DevOps",
       variant: 5,
-      skills: ["Shell Scripting", "Docker", "Git", "Jira", "Unit Testing"]
+      skills: ["Shell Scripting", "Docker", "Kuberneters", "Jira", "Unit Testing"]
     }
   ];
 
