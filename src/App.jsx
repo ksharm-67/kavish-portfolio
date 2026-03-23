@@ -319,9 +319,9 @@ function App() {
       link: "https://github.com/ksharm-67/Diffie-Hellman-Key-Encryption"
     },
     {
-      title: "RSA Encryption",
-      description: "Implements the Extended Euclidean Algorithm for private key generation and RSA encryption of plaintext.",
-      link: "https://github.com/ksharm-67/RSA-Encryption"
+      title: "X-Ray disease classifier",
+      description: "Fine-tuned ResNet50 on the NIH ChestX-ray14 dataset for multilabel classification of 15 thoracic diseases, evaluated using AUC-ROC curves.",
+      link: "https://github.com/ksharm-67/private-xray-classifier"
     }
   ];
 
