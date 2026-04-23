@@ -18,6 +18,22 @@
   color: #bb86fc;
 }
 
+.header-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.header-links a {
+  color: inherit;
+  transition: opacity 0.2s;
+}
+
+.header-links a:hover {
+  opacity: 0.6;
+}
+
 nav {
   position: sticky;
   top: 0;
